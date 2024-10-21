@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.22.0)
 # https://github.com/freetype/freetype.git
 set(PROJECT_FREETYPE_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/Vendor/freetype/include" CACHE PATH "")
 # https://github.com/freetype/freetype.git
-set(PROJECT_FREETYPE_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/../Vendor/freetype/build/Release/freetype.lib" CACHE PATH "")
+set(PROJECT_FREETYPE_LIBRARY "${CMAKE_CURRENT_SOURCE_DIR}/Vendor/freetype/build/Release/freetype.lib" CACHE PATH "")
 # https://github.com/nothings/stb.git
 set(PROJECT_STB_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/Vendor/stb" CACHE PATH "")
 
@@ -32,10 +32,14 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY VS_STARTUP_PROJECT "${PROJECT_NAME}")
 
 set(SOURCE_FILES
-    "Src/Main.cpp"
+    "Source/FontData.h"
+    "Source/FontToSpriteSheet.cpp"
+    "Source/FontToSpriteSheet.h"
+    "Source/Main.cpp"
+    "Source/TextureData.h"
 )
 
-source_group("Src" FILES ${SOURCE_FILES})
+source_group("Source" FILES ${SOURCE_FILES})
 
 # adding WIN32 makes WinMain() the entry point and so no conole appears
 add_executable("${PROJECT_NAME}" # WIN32
@@ -53,7 +57,7 @@ target_include_directories("${PROJECT_NAME}"
     PRIVATE 
     "${PROJECT_FREETYPE_INCLUDE}"
     "${PROJECT_STB_INCLUDE}"
-    "Src"
+    "Source"
 )
 
 target_link_directories("${PROJECT_NAME}"
