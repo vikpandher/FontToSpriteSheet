@@ -1,6 +1,6 @@
 # ==============================================================================
 # @AUTHOR Vik Pandher
-# @DATE 2023-12-20
+# @DATE 2024-10-30
 
 if(${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR})
     message(FATAL_ERROR "Prevented in-tree build. Create a build directory and run \"cmake -S ${CMAKE_SOURCE_DIR} -B .\" from there")
@@ -50,7 +50,9 @@ target_compile_definitions("${PROJECT_NAME}" PRIVATE PROJECT_NAME="${PROJECT_NAM
 
 # Set command line arguments for the executable
 set_target_properties("${PROJECT_NAME}" PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS
-    "/s ../Test/Cube.obj ../Test/Cube_obj.h g_cube_obj"
+    # "48 1 1 \"../Test/Action Man.ttf\" ../Test/CharacterList_01.txt ../Test/FontTexture_01.png ../Test/FontData_01.ssf"
+    # "64 1 1 ../Test/CascadiaCode.ttf ../Test/CharacterList_01.txt ../Test/FontTexture_02.png ../Test/FontData_02.ssf"
+    "48 1 1 \"../Test/Antonio-Regular.ttf\" ../Test/CharacterList_01.txt ../Test/FontTexture_03.png ../Test/FontData_03.ssf"
 )
 
 target_include_directories("${PROJECT_NAME}"
